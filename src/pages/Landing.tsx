@@ -90,7 +90,8 @@ export default function Landing() {
             <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-xl">
               Proof Tag links every physical item to a verifiable digital twin.
               Customers scan an NFC/QR tag, the system validates authenticity,
-              and ownership is recorded on a tamper-resistant ledger.
+              confirming the product is genuine before it changes hands, and
+              ownership is recorded on a tamper-resistant ledger.
             </p>
             <div className="grid sm:grid-cols-2 gap-4 text-sm text-slate-600">
               <div className="flex items-start gap-3">
