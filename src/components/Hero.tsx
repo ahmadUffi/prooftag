@@ -50,10 +50,10 @@ export default function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="relative z-10 p-4 bg-white rounded-3xl shadow-2xl border border-slate-100">
+        <div className="relative z-10 p-4 ">
           <svg
             viewBox="0 0 640 480"
-            className="w-full h-auto rounded-2xl bg-slate-50"
+            className="w-full h-auto rounded-2xl bg-whitez"
             role="img"
             aria-label="Animated product protection diagram"
           >
@@ -68,7 +68,7 @@ export default function Hero() {
               </radialGradient>
             </defs>
 
-            <rect width="640" height="480" rx="24" fill="url(#glow)" />
+            <rect width="640" height="480" rx="24" fill="white" />
 
             <g>
               <circle
