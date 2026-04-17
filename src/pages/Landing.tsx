@@ -194,7 +194,7 @@ export default function Landing() {
           <div className="col-span-2">
             <div className="flex items-center gap-2 font-bold text-2xl mb-6">
               <ShieldCheck className="w-8 h-8 text-primary" />
-              <span>Shieldtag</span>
+              <span>Proof Tag</span>
             </div>
             <p className="text-slate-500 max-w-sm">
               The world's most advanced phygital infrastructure for product
@@ -221,7 +221,7 @@ export default function Landing() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 text-center text-xs text-slate-400">
-          © {new Date().getFullYear()} Shieldtag Systems Inc. All rights
+          © {new Date().getFullYear()} Proof Tag Systems Inc. All rights
           reserved.
         </div>
       </footer>

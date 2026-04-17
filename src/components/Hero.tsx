@@ -50,150 +50,145 @@ export default function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="relative z-10 p-4 ">
+        <div className="relative z-10 p-4">
           <svg
             viewBox="0 0 640 480"
-            className="w-full h-auto rounded-2xl bg-whitez"
-            role="img"
-            aria-label="Animated product protection diagram"
+            className="w-full h-auto rounded-2xl bg-white"
           >
             <defs>
-              <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#0ea5e9" />
-                <stop offset="100%" stopColor="#22c55e" />
+              <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#22c55e" stopOpacity="0" />
+                <stop offset="50%" stopColor="#22c55e" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
               </linearGradient>
-              <radialGradient id="glow" cx="50%" cy="40%" r="60%">
-                <stop offset="0%" stopColor="#e0f2fe" />
-                <stop offset="100%" stopColor="#f8fafc" />
-              </radialGradient>
             </defs>
 
-            <rect width="640" height="480" rx="24" fill="white" />
+            {/* Background */}
+            <rect width="640" height="480" rx="24" fill="#fff" />
 
-            <g>
-              <circle
-                cx="320"
-                cy="240"
-                r="150"
-                fill="none"
-                stroke="#e2e8f0"
-                strokeWidth="2"
-                strokeDasharray="6 10"
-              >
-                <animateTransform
-                  attributeName="transform"
-                  type="rotate"
-                  from="0 320 240"
-                  to="360 320 240"
-                  dur="18s"
-                  repeatCount="indefinite"
-                />
-              </circle>
-              <circle
-                cx="320"
-                cy="240"
-                r="120"
-                fill="none"
-                stroke="#38bdf8"
-                strokeWidth="3"
-                strokeDasharray="3 8"
-                opacity="0.7"
-              >
-                <animateTransform
-                  attributeName="transform"
-                  type="rotate"
-                  from="360 320 240"
-                  to="0 320 240"
-                  dur="12s"
-                  repeatCount="indefinite"
-                />
-              </circle>
+            {/* BLOCKCHAIN CONNECTION LINES */}
+            <g stroke="#94a3b8" strokeWidth="1.5" opacity="0.6">
+              <line x1="120" y1="100" x2="220" y2="160" />
+              <line x1="520" y1="120" x2="420" y2="180" />
+              <line x1="500" y1="360" x2="400" y2="300" />
             </g>
 
-            <g>
-              <circle cx="160" cy="140" r="6" fill="#22c55e">
+            {/* BLOCKCHAIN NODES */}
+            <g fill="#38bdf8">
+              <circle cx="120" cy="100" r="6">
                 <animate
                   attributeName="r"
-                  values="6;10;6"
-                  dur="2.6s"
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  values="0.6;1;0.6"
-                  dur="2.6s"
+                  values="6;9;6"
+                  dur="2.5s"
                   repeatCount="indefinite"
                 />
               </circle>
-              <circle cx="500" cy="130" r="5" fill="#0ea5e9">
+              <circle cx="520" cy="120" r="6">
                 <animate
                   attributeName="r"
-                  values="5;9;5"
-                  dur="2.2s"
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  values="0.6;1;0.6"
-                  dur="2.2s"
+                  values="6;9;6"
+                  dur="2s"
                   repeatCount="indefinite"
                 />
               </circle>
-              <circle cx="520" cy="360" r="6" fill="#38bdf8">
+              <circle cx="500" cy="360" r="6">
                 <animate
                   attributeName="r"
-                  values="6;11;6"
-                  dur="2.8s"
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  values="0.6;1;0.6"
+                  values="6;9;6"
                   dur="2.8s"
                   repeatCount="indefinite"
                 />
               </circle>
             </g>
 
-            <g>
-              <path
-                d="M320 120 L420 160 V260 C420 320 370 370 320 400 C270 370 220 320 220 260 V160 Z"
-                fill="url(#shieldGrad)"
-                stroke="#0f172a"
+            {/* FLOATING CUBES */}
+            <g fill="#22c55e" opacity="0.8">
+              <rect x="100" y="140" width="18" height="18">
+                <animateTransform
+                  attributeName="transform"
+                  type="translate"
+                  values="0 0; 10 -10; 0 0"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+
+              <rect x="520" y="200" width="18" height="18">
+                <animateTransform
+                  attributeName="transform"
+                  type="translate"
+                  values="0 0; -10 10; 0 0"
+                  dur="2.5s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+            </g>
+
+            {/* QR BOX */}
+            <g transform="translate(220,100)">
+              <rect
+                width="200"
+                height="200"
+                rx="16"
+                fill="white"
+                stroke="#cbd5f5"
                 strokeWidth="2"
-                opacity="0.95"
               />
+
+              {/* Fake QR */}
+              <g fill="#0f172a">
+                <rect x="20" y="20" width="40" height="40" />
+                <rect x="140" y="20" width="40" height="40" />
+                <rect x="20" y="140" width="40" height="40" />
+
+                <rect x="80" y="40" width="20" height="20" />
+                <rect x="110" y="70" width="20" height="20" />
+                <rect x="80" y="110" width="20" height="20" />
+                <rect x="120" y="120" width="30" height="30" />
+              </g>
+
+              {/* SCAN LINE */}
+              <rect width="200" height="40" fill="url(#scanGrad)">
+                <animate
+                  attributeName="y"
+                  values="-40;200"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+            </g>
+
+            {/* CHECK ICON */}
+            <g transform="translate(320,210)">
+              <circle r="35" fill="#22c55e" opacity="0.15" />
+              <circle r="26" fill="#22c55e" />
+
               <path
-                d="M280 250 L312 282 L360 230"
+                d="M -8 0 L -2 8 L 12 -6"
                 fill="none"
-                stroke="#0f172a"
-                strokeWidth="10"
+                stroke="white"
+                strokeWidth="4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
                 <animate
                   attributeName="stroke-dasharray"
-                  values="0 200;120 200;0 200"
-                  dur="3.2s"
-                  repeatCount="indefinite"
+                  values="0 50;50 50"
+                  dur="1s"
+                  fill="freeze"
                 />
               </path>
             </g>
 
-            <g opacity="0.85">
-              <rect
-                x="110"
-                y="300"
-                width="54"
-                height="54"
-                rx="8"
-                fill="#0f172a"
-              />
-              <rect x="122" y="312" width="10" height="10" fill="#e2e8f0" />
-              <rect x="138" y="312" width="10" height="10" fill="#e2e8f0" />
-              <rect x="122" y="328" width="10" height="10" fill="#e2e8f0" />
-              <rect x="138" y="328" width="18" height="18" fill="#e2e8f0" />
-            </g>
+            {/* TEXT (ENGLISH, LOWER, BLACK) */}
+            <text
+              x="320"
+              y="380"
+              textAnchor="middle"
+              fontSize="26"
+              fontWeight="bold"
+              fill="#000000"
+            ></text>
           </svg>
         </div>
         <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10" />

@@ -1,32 +1,32 @@
-import { useState } from 'react';
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Package, 
-  MapPin, 
-  History, 
-  Key, 
-  BarChart3, 
-  Settings, 
+import { useState } from "react";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+import {
+  LayoutDashboard,
+  Package,
+  MapPin,
+  History,
+  Key,
+  BarChart3,
+  Settings,
   ShieldCheck,
   Bell,
   Search,
   ChevronRight,
   Menu,
-  X
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+  X,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navItems = [
-  { icon: LayoutDashboard, label: 'Overview', path: '/dashboard' },
-  { icon: Package, label: 'Products', path: '/dashboard/products' },
-  { icon: MapPin, label: 'Tracking', path: '/dashboard/tracking' },
-  { icon: History, label: 'Verification Logs', path: '/dashboard/logs' },
-  { icon: Key, label: 'Ownership', path: '/dashboard/ownership' },
-  { icon: BarChart3, label: 'Analytics', path: '/dashboard/analytics' },
-  { icon: Settings, label: 'Settings', path: '/dashboard/settings' },
+  { icon: LayoutDashboard, label: "Overview", path: "/dashboard" },
+  { icon: Package, label: "Products", path: "/dashboard/products" },
+  { icon: MapPin, label: "Tracking", path: "/dashboard/tracking" },
+  { icon: History, label: "Verification Logs", path: "/dashboard/logs" },
+  { icon: Key, label: "Ownership", path: "/dashboard/ownership" },
+  { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
+  { icon: Settings, label: "Settings", path: "/dashboard/settings" },
 ];
 
 export default function DashboardLayout() {
@@ -36,15 +36,17 @@ export default function DashboardLayout() {
   return (
     <div className="flex h-screen bg-[#F8F9FB] text-slate-900">
       {/* Sidebar */}
-      <aside 
+      <aside
         className={cn(
           "bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-50",
-          sidebarOpen ? "w-64" : "w-20"
+          sidebarOpen ? "w-64" : "w-20",
         )}
       >
         <div className="p-6 flex items-center gap-3">
           <ShieldCheck className="w-8 h-8 text-primary shrink-0" />
-          {sidebarOpen && <span className="font-bold text-xl tracking-tight">Shieldtag</span>}
+          {sidebarOpen && (
+            <span className="font-bold text-xl tracking-tight">Proof Tag</span>
+          )}
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-1">
@@ -52,13 +54,15 @@ export default function DashboardLayout() {
             <NavLink
               key={item.path}
               to={item.path}
-              end={item.path === '/dashboard'}
-              className={({ isActive }) => cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors relative group",
-                isActive 
-                  ? "bg-primary/5 text-primary" 
-                  : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-              )}
+              end={item.path === "/dashboard"}
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors relative group",
+                  isActive
+                    ? "bg-primary/5 text-primary"
+                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900",
+                )
+              }
             >
               <item.icon className="w-5 h-5 shrink-0" />
               {sidebarOpen && <span>{item.label}</span>}
@@ -72,7 +76,12 @@ export default function DashboardLayout() {
         </nav>
 
         <div className="p-4 border-t border-slate-200">
-          <div className={cn("flex items-center gap-3", !sidebarOpen && "justify-center")}>
+          <div
+            className={cn(
+              "flex items-center gap-3",
+              !sidebarOpen && "justify-center",
+            )}
+          >
             <Avatar className="w-10 h-10">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>AD</AvatarFallback>
@@ -84,13 +93,17 @@ export default function DashboardLayout() {
               </div>
             )}
           </div>
-          <Button 
-            variant="ghost" 
-            size="sm" 
+          <Button
+            variant="ghost"
+            size="sm"
             className="w-full mt-4 text-slate-400 hover:text-slate-600"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
-            {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {sidebarOpen ? (
+              <X className="w-4 h-4" />
+            ) : (
+              <Menu className="w-4 h-4" />
+            )}
           </Button>
         </div>
       </aside>
@@ -101,13 +114,13 @@ export default function DashboardLayout() {
         <header className="h-16 bg-white border-bottom border-slate-200 flex items-center justify-between px-8 shrink-0">
           <div className="flex items-center gap-4 flex-1">
             <h1 className="text-lg font-bold capitalize">
-              {location.pathname.split('/').pop() || 'Overview'}
+              {location.pathname.split("/").pop() || "Overview"}
             </h1>
             <div className="max-w-md w-full relative hidden md:block">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input 
-                type="text" 
-                placeholder="Search products, batches, logs..." 
+              <input
+                type="text"
+                placeholder="Search products, batches, logs..."
                 className="w-full bg-slate-100 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-none"
               />
             </div>
