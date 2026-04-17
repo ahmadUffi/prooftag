@@ -1,16 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Landing from './pages/Landing';
-import DashboardLayout from './pages/dashboard/Layout';
-import Overview from './pages/dashboard/Overview';
-import Products from './pages/dashboard/Products';
-import Tracking from './pages/dashboard/Tracking';
-import Logs from './pages/dashboard/Logs';
-import Ownership from './pages/dashboard/Ownership';
-import Analytics from './pages/dashboard/Analytics';
-import Settings from './pages/dashboard/Settings';
-import Verify from './pages/Verify';
-import { Toaster } from './components/ui/sonner';
-import { TooltipProvider } from './components/ui/tooltip';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Landing from "./pages/Landing";
+import DashboardLayout from "./pages/dashboard/Layout";
+import Overview from "./pages/dashboard/Overview";
+import Products from "./pages/dashboard/Products";
+import Tracking from "./pages/dashboard/Tracking";
+import Logs from "./pages/dashboard/Logs";
+import Ownership from "./pages/dashboard/Ownership";
+import Analytics from "./pages/dashboard/Analytics";
+import Settings from "./pages/dashboard/Settings";
+import Verify from "./pages/Verify";
+import { Toaster } from "./components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip.tsx";
 
 export default function App() {
   return (
