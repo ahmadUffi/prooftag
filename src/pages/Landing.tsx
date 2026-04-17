@@ -1,19 +1,19 @@
-import { motion } from 'motion/react';
-import { useNavigate } from 'react-router-dom';
-import { 
-  ShieldCheck, 
-  RefreshCcw, 
-  Zap, 
+import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
+import {
+  ShieldCheck,
+  RefreshCcw,
+  Zap,
   ArrowRight,
   Fingerprint,
   AlertTriangle,
-  Eye
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import AnimatedFlow from '@/components/AnimatedFlow';
-import Hero from '@/components/Hero';
-import FeatureCard from '@/components/FeatureCard';
+  Eye,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import AnimatedFlow from "@/components/AnimatedFlow";
+import Hero from "@/components/Hero";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -22,16 +22,39 @@ export default function Landing() {
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 overflow-x-hidden text-pretty">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
-        <div className="flex items-center gap-2 font-bold text-2xl tracking-tight cursor-pointer" onClick={() => navigate('/')}>
+        <div
+          className="flex items-center gap-2 font-bold text-2xl tracking-tight cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <ShieldCheck className="w-8 h-8 text-primary" />
-          <span>Shieldtag</span>
+          <span>Proof Tag</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-          <a href="#problem" className="hover:text-primary transition-colors">Problem</a>
-          <a href="#solution" className="hover:text-primary transition-colors">Solution</a>
-          <a href="#how-it-works" className="hover:text-primary transition-colors">Method</a>
-          <Button variant="ghost" className="hover:bg-primary/5 hover:text-primary" onClick={() => navigate('/dashboard')}>Login</Button>
-          <Button onClick={() => navigate('/dashboard')} className="shadow-lg shadow-primary/20">Launch App</Button>
+          <a href="#problem" className="hover:text-primary transition-colors">
+            Problem
+          </a>
+          <a href="#solution" className="hover:text-primary transition-colors">
+            Solution
+          </a>
+          <a
+            href="#how-it-works"
+            className="hover:text-primary transition-colors"
+          >
+            Method
+          </a>
+          <Button
+            variant="ghost"
+            className="hover:bg-primary/5 hover:text-primary"
+            onClick={() => navigate("/dashboard")}
+          >
+            Login
+          </Button>
+          <Button
+            onClick={() => navigate("/dashboard")}
+            className="shadow-lg shadow-primary/20"
+          >
+            Launch App
+          </Button>
         </div>
       </nav>
 
@@ -42,8 +65,12 @@ export default function Landing() {
         {/* Animated Flow */}
         <div className="mt-40" id="how-it-works">
           <div className="text-center mb-16">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">The Shieldtag Process</h2>
-            <p className="text-3xl md:text-4xl font-bold tracking-tight">Seamlessly connecting atoms and bits</p>
+            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+              The Shieldtag Process
+            </h2>
+            <p className="text-3xl md:text-4xl font-bold tracking-tight">
+              Seamlessly connecting atoms and bits
+            </p>
           </div>
           <AnimatedFlow />
         </div>
@@ -53,24 +80,29 @@ export default function Landing() {
       <section id="problem" className="px-8 py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold mb-6 tracking-tight">The Global Counterfeit Crisis</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-lg">Traditional supply chains are opaque, leaving brands and consumers vulnerable to massive fraud and trust decay.</p>
+            <h2 className="text-4xl font-bold mb-6 tracking-tight">
+              The Global Counterfeit Crisis
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+              Traditional supply chains are opaque, leaving brands and consumers
+              vulnerable to massive fraud and trust decay.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={<AlertTriangle className="w-10 h-10 text-red-500" />} 
-              title="Fakes Everywhere" 
-              description="$2.3T in annual losses due to counterfeit goods across all global industries." 
+            <FeatureCard
+              icon={<AlertTriangle className="w-10 h-10 text-red-500" />}
+              title="Fakes Everywhere"
+              description="$2.3T in annual losses due to counterfeit goods across all global industries."
             />
-            <FeatureCard 
-              icon={<Eye className="w-10 h-10 text-orange-500" />} 
-              title="Zero Visibility" 
-              description="Brands lose track of products as soon as they leave the factory gate, leading to distribution data gaps." 
+            <FeatureCard
+              icon={<Eye className="w-10 h-10 text-orange-500" />}
+              title="Zero Visibility"
+              description="Brands lose track of products as soon as they leave the factory gate, leading to distribution data gaps."
             />
-            <FeatureCard 
-              icon={<RefreshCcw className="w-10 h-10 text-blue-500" />} 
-              title="Broken Resale" 
-              description="No way for consumers to prove ownership or authenticity in secondary markets, destroying asset value." 
+            <FeatureCard
+              icon={<RefreshCcw className="w-10 h-10 text-blue-500" />}
+              title="Broken Resale"
+              description="No way for consumers to prove ownership or authenticity in secondary markets, destroying asset value."
             />
           </div>
         </div>
@@ -80,10 +112,12 @@ export default function Landing() {
       <section className="px-8 py-32 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold mb-6">Dual Engine Ownership</h2>
-          <p className="text-slate-500">Optimized for every product lifecycle.</p>
+          <p className="text-slate-500">
+            Optimized for every product lifecycle.
+          </p>
         </div>
         <div className="grid md:grid-cols-2 gap-12">
-          <motion.div 
+          <motion.div
             whileHover={{ y: -10 }}
             className="p-10 rounded-3xl bg-white border-2 border-slate-100 shadow-sm relative overflow-hidden group"
           >
@@ -93,7 +127,9 @@ export default function Landing() {
             </div>
             <h3 className="text-2xl font-bold mb-4">Consumable Model</h3>
             <p className="text-slate-500 mb-8 leading-relaxed">
-              Designed for products used once (Pharma, Food, Beauty). Each scan verifies authenticity, and the digital token is burned upon claim to prevent reuse.
+              Designed for products used once (Pharma, Food, Beauty). Each scan
+              verifies authenticity, and the digital token is burned upon claim
+              to prevent reuse.
             </p>
             <ul className="space-y-4 mb-10">
               <li className="flex items-center gap-3 text-sm font-medium text-slate-700">
@@ -109,10 +145,12 @@ export default function Landing() {
                 Instant Burning Logic
               </li>
             </ul>
-            <Button variant="outline" className="w-full">Explore Use Cases</Button>
+            <Button variant="outline" className="w-full">
+              Explore Use Cases
+            </Button>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ y: -10 }}
             className="p-10 rounded-3xl bg-slate-900 text-white shadow-xl relative overflow-hidden group"
           >
@@ -122,7 +160,9 @@ export default function Landing() {
             </div>
             <h3 className="text-2xl font-bold mb-4">Durable Model</h3>
             <p className="text-slate-300 mb-8 leading-relaxed">
-              Perfect for high-value items (Luxury, Electronics, Collector items). Digital twin NFT allows ownership transfer and full lifecycle traceability.
+              Perfect for high-value items (Luxury, Electronics, Collector
+              items). Digital twin NFT allows ownership transfer and full
+              lifecycle traceability.
             </p>
             <ul className="space-y-4 mb-10 text-slate-400">
               <li className="flex items-center gap-3 text-sm font-medium">
@@ -138,7 +178,12 @@ export default function Landing() {
                 Historical Ownership Log
               </li>
             </ul>
-            <Button variant="secondary" className="w-full bg-white text-slate-900 border-none">Explore Use Cases</Button>
+            <Button
+              variant="secondary"
+              className="w-full bg-white text-slate-900 border-none"
+            >
+              Explore Use Cases
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -151,7 +196,10 @@ export default function Landing() {
               <ShieldCheck className="w-8 h-8 text-primary" />
               <span>Shieldtag</span>
             </div>
-            <p className="text-slate-500 max-w-sm">The world's most advanced phygital infrastructure for product protection and brand integrity.</p>
+            <p className="text-slate-500 max-w-sm">
+              The world's most advanced phygital infrastructure for product
+              protection and brand integrity.
+            </p>
           </div>
           <div>
             <h4 className="font-bold mb-6">Product</h4>
@@ -173,7 +221,8 @@ export default function Landing() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 text-center text-xs text-slate-400">
-          © {new Date().getFullYear()} Shieldtag Systems Inc. All rights reserved.
+          © {new Date().getFullYear()} Shieldtag Systems Inc. All rights
+          reserved.
         </div>
       </footer>
     </div>
