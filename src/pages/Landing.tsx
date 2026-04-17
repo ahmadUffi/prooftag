@@ -76,6 +76,111 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Solution Section */}
+      <section id="solution" className="px-8 py-32 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
+          <div>
+            <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-slate-400 mb-6">
+              <span className="w-10 h-px bg-slate-300" />
+              The Solution
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+              Scan once. Verify instantly. Anchor trust on-chain.
+            </h2>
+            <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-xl">
+              Proof Tag links every physical item to a verifiable digital twin.
+              Customers scan an NFC/QR tag, the system validates authenticity,
+              and ownership is recorded on a tamper-resistant ledger.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 text-sm text-slate-600">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 size-2 rounded-full bg-primary" />
+                Real-time authenticity checks with anti-replay protection.
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 size-2 rounded-full bg-primary" />
+                Ownership trail that survives transfers and resale.
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 size-2 rounded-full bg-primary" />
+                Unified dashboard for product status and risk alerts.
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 size-2 rounded-full bg-primary" />
+                Works across FMCG, luxury, and regulated goods.
+              </div>
+            </div>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Button
+                onClick={() => navigate("/dashboard")}
+                className="shadow-lg shadow-primary/20"
+              >
+                Launch App <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button variant="outline">See Documentation</Button>
+            </div>
+          </div>
+
+          <div className="grid gap-6">
+            <Card className="border-2 border-slate-100 shadow-sm">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-wider text-slate-400">
+                    Verify
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Instant authenticity</h3>
+                <p className="text-sm text-slate-500">
+                  One tap confirms genuine goods and flags anomalies before they
+                  reach the customer.
+                </p>
+              </div>
+            </Card>
+
+            <Card className="border-2 border-slate-100 shadow-sm">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                    <Fingerprint className="w-5 h-5" />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-wider text-slate-400">
+                    Ownership
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Proof that travels</h3>
+                <p className="text-sm text-slate-500">
+                  Digital ownership records move with the item, supporting
+                  resale and warranty handoffs.
+                </p>
+              </div>
+            </Card>
+
+            <Card className="border-2 border-slate-100 shadow-sm">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <div className="text-sm font-bold uppercase tracking-wider text-slate-400">
+                    Blockchain
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2">
+                  Immutable audit trail
+                </h3>
+                <p className="text-sm text-slate-500">
+                  Every scan and transfer is recorded on-chain for transparent,
+                  tamper-proof compliance.
+                </p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Problem Section */}
       <section id="problem" className="px-8 py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto">
