@@ -1,0 +1,8 @@
+{
+  "name": "Shieldtag",
+  "description": "Phygital product identity and ownership system connecting physical products with digital assets via QR/hologram and blockchain.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
