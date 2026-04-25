@@ -1,134 +1,225 @@
-import { 
-  Users, 
-  Package, 
-  Scan, 
-  AlertTriangle, 
+import {
+  BadgeCheck,
   Clock,
-  ExternalLink
-} from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { 
-  AreaChart, 
-  Area, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  ResponsiveContainer 
-} from 'recharts';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import KPI from '@/components/KPI';
+  QrCode,
+  ShieldCheck,
+  Scan,
+  Wallet,
+  ArrowRight,
+  Sparkles,
+  ExternalLink,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
 
-const data = [
-  { name: 'Mon', scans: 450, fraud: 12 },
-  { name: 'Tue', scans: 520, fraud: 8 },
-  { name: 'Wed', scans: 480, fraud: 15 },
-  { name: 'Thu', scans: 610, fraud: 4 },
-  { name: 'Fri', scans: 550, fraud: 10 },
-  { name: 'Sat', scans: 380, fraud: 2 },
-  { name: 'Sun', scans: 420, fraud: 5 },
+const quickStats = [
+  {
+    label: "Items Verified",
+    value: "1,248",
+    note: "+12% this month",
+    icon: BadgeCheck,
+    tone: "text-emerald-600 bg-emerald-50",
+  },
+  {
+    label: "Ownership Claims",
+    value: "312",
+    note: "98% success rate",
+    icon: Wallet,
+    tone: "text-blue-600 bg-blue-50",
+  },
+  {
+    label: "Active Watches",
+    value: "42",
+    note: "7 alerts in 24h",
+    icon: ShieldCheck,
+    tone: "text-amber-600 bg-amber-50",
+  },
 ];
 
-const kpiData = [
-  { label: 'Total Products', value: '124,502', change: '+12%', icon: Package, color: 'text-blue-600', bg: 'bg-blue-100' },
-  { label: 'Active Items', value: '88,291', change: '+5%', icon: Users, color: 'text-green-600', bg: 'bg-green-100' },
-  { label: 'Total Scans', value: '452,109', change: '+24%', icon: Scan, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { label: 'Fraud Alerts', value: '42', change: '-18%', icon: AlertTriangle, color: 'text-red-600', bg: 'bg-red-100' },
+const recentScans = [
+  {
+    product: "Aurelia Luxe Watch",
+    status: "Verified",
+    time: "2 mins ago",
+    location: "Jakarta, ID",
+  },
+  {
+    product: "OxyPure Pack B-12",
+    status: "Verified",
+    time: "12 mins ago",
+    location: "Bandung, ID",
+  },
+  {
+    product: "Amber Coffee Beans",
+    status: "Flagged",
+    time: "45 mins ago",
+    location: "Surabaya, ID",
+  },
+  {
+    product: "Heritage Bag 07",
+    status: "Verified",
+    time: "2 hours ago",
+    location: "Singapore",
+  },
 ];
 
 export default function Overview() {
   return (
     <div className="space-y-8">
-      {/* KPI Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {kpiData.map((kpi, i) => (
-          <KPI 
-            key={i} 
-            label={kpi.label}
-            value={kpi.value}
-            change={kpi.change}
-            icon={kpi.icon}
-            color={kpi.color}
-            bg={kpi.bg}
-          />
+      <div className="rounded-3xl bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-8 relative overflow-hidden">
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-16 -left-10 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl" />
+        <div className="relative z-10 grid lg:grid-cols-[1.4fr_0.6fr] gap-6 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-300 mb-4">
+              <Sparkles className="w-4 h-4 text-primary" />
+              User Dashboard
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              Track what you verified today
+            </h2>
+            <p className="text-slate-300 max-w-xl">
+              Keep your verified items organized, claim ownership in seconds,
+              and watch alerts for any suspicious scans tied to your products.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Button className="bg-white text-slate-900 hover:bg-white/90">
+              Scan a Product <QrCode className="w-4 h-4 ml-2" />
+            </Button>
+            <Button variant="outline" className="border-white/30 text-white">
+              View Verified Items <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        {quickStats.map((stat) => (
+          <Card key={stat.label} className="border-none shadow-sm">
+            <CardContent className="p-6 space-y-4">
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center ${stat.tone}`}
+              >
+                <stat.icon className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="text-sm text-slate-500">{stat.label}</p>
+                <p className="text-3xl font-bold text-slate-900">
+                  {stat.value}
+                </p>
+                <p className="text-xs text-slate-400 mt-1">{stat.note}</p>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Main Chart */}
-        <Card className="lg:col-span-2 border-none shadow-sm h-[450px]">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle className="text-lg">Scan Activity</CardTitle>
-              <CardDescription>Daily scan volume across all regions</CardDescription>
-            </div>
-            <Button variant="outline" size="sm">Last 7 Days</Button>
-          </CardHeader>
-          <CardContent className="h-[350px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={data}>
-                <defs>
-                  <linearGradient id="colorScans" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
-                <YAxis axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
-                <Tooltip 
-                  contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}} 
-                />
-                <Area type="monotone" dataKey="scans" stroke="#3b82f6" fillOpacity={1} fill="url(#colorScans)" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-
-        {/* Recent Activity */}
-        <Card className="border-none shadow-sm overflow-hidden flex flex-col">
+      <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
+        <Card className="border-none shadow-sm">
           <CardHeader>
-            <CardTitle className="text-lg">Recent Activity</CardTitle>
-            <CardDescription>Latest events from the blockchain</CardDescription>
+            <CardTitle className="text-lg">Recent verifications</CardTitle>
+            <CardDescription>
+              Latest scans tied to your wallet and claims.
+            </CardDescription>
           </CardHeader>
-          <ScrollArea className="flex-1">
-            <div className="px-6 space-y-6 pb-6">
-              {[
-                { type: 'BURN', product: 'OxyPure Pack B-12', time: '2 mins ago', status: 'COMPLETED' },
-                { type: 'SCAN', product: 'Luxury Watch W-402', time: '5 mins ago', status: 'VALID' },
-                { type: 'MINT', product: 'New Harvest Batch #04', time: '12 mins ago', status: 'PENDING' },
-                { type: 'TRANSFER', product: 'Antique Vase A-9', time: '1 hour ago', status: 'COMPLETED' },
-                { type: 'FRAUD', product: 'OxyPure Pack B-11', time: '3 hours ago', status: 'FLAGGED' },
-              ].map((activity, i) => (
-                <div key={i} className="flex gap-4 group">
-                  <div className="relative">
-                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                      <Clock className="w-4 h-4 text-slate-400" />
+          <CardContent>
+            <div className="space-y-5">
+              {recentScans.map((scan) => (
+                <div
+                  key={scan.product}
+                  className="flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                      <Scan className="w-4 h-4 text-slate-500" />
                     </div>
-                    {i !== 4 && <div className="absolute top-10 left-1/2 -translate-x-1/2 w-px h-6 bg-slate-100" />}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <p className="text-sm font-bold truncate">
-                        {activity.type} <span className="text-slate-400 font-normal">on</span> {activity.product}
+                    <div>
+                      <p className="font-semibold text-slate-900">
+                        {scan.product}
                       </p>
-                      <Badge variant={activity.status === 'FLAGGED' ? 'destructive' : 'secondary'} className="text-[10px] h-4">
-                        {activity.status}
-                      </Badge>
+                      <p className="text-xs text-slate-500">{scan.location}</p>
                     </div>
-                    <p className="text-xs text-slate-400 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
-                      {activity.time} <ExternalLink className="w-3 h-3" />
-                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Badge
+                      variant={
+                        scan.status === "Flagged" ? "destructive" : "secondary"
+                      }
+                    >
+                      {scan.status}
+                    </Badge>
+                    <span className="text-xs text-slate-400">{scan.time}</span>
                   </div>
                 </div>
               ))}
             </div>
-          </ScrollArea>
-          <div className="p-4 border-t border-slate-50">
-            <Button variant="ghost" className="w-full text-xs text-slate-400">View All Logs</Button>
-          </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-none shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-lg">Ownership timeline</CardTitle>
+            <CardDescription>
+              Claims and transfers linked to your wallet.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {[
+              {
+                title: "Claimed OxyPure Pack B-12",
+                time: "2 days ago",
+                status: "Completed",
+              },
+              {
+                title: "Verified Heritage Bag 07",
+                time: "4 days ago",
+                status: "Completed",
+              },
+              {
+                title: "Flagged Amber Coffee Beans",
+                time: "1 week ago",
+                status: "Needs Review",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
+                  <Clock className="w-4 h-4 text-slate-500" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold text-slate-900">
+                      {item.title}
+                    </p>
+                    <Badge
+                      variant={
+                        item.status === "Needs Review"
+                          ? "destructive"
+                          : "secondary"
+                      }
+                      className="text-[10px]"
+                    >
+                      {item.status}
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-slate-400 flex items-center gap-1">
+                    {item.time} <ExternalLink className="w-3 h-3" />
+                  </p>
+                </div>
+              </div>
+            ))}
+            <Button variant="ghost" className="w-full text-sm text-slate-500">
+              View all activity
+            </Button>
+          </CardContent>
         </Card>
       </div>
     </div>

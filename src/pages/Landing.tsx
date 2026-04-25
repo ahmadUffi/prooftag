@@ -45,12 +45,12 @@ export default function Landing() {
           <Button
             variant="ghost"
             className="hover:bg-primary/5 hover:text-primary"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/login")}
           >
             Login
           </Button>
           <Button
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/signup")}
             className="shadow-lg shadow-primary/20"
           >
             Launch App
@@ -113,7 +113,7 @@ export default function Landing() {
             </div>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/signup")}
                 className="shadow-lg shadow-primary/20"
               >
                 Launch App <ArrowRight className="ml-2 w-4 h-4" />

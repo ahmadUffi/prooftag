@@ -30,7 +30,7 @@ export default function Hero() {
           <Button
             size="lg"
             className="h-14 px-8 text-md font-bold"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/signup")}
           >
             Request Demo <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
