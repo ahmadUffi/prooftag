@@ -8,21 +8,30 @@ import {
   AlertTriangle,
   Lock,
 } from "lucide-react";
+import { useAccount, useConnect } from "wagmi";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [isConnecting, setIsConnecting] = useState(false);
-  const [connected, setConnected] = useState(false);
+  const { connect, connectors, isPending } = useConnect();
+  const { address, isConnected } = useAccount();
 
-  const handleConnect = async () => {
-    setIsConnecting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setConnected(true);
-    setIsConnecting(false);
+  const handleConnect = async (connector: any) => {
+    try {
+      await connect({ connector });
+    } catch (err) {
+      console.error("Connect error:", err);
+    }
   };
 
+  useEffect(() => {
+    if (isConnected && address) {
+      // nanti di sini kita cek ke backend
+      navigate("/dashboard");
+    }
+  }, [isConnected, address]);
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 overflow-x-hidden">
       <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
@@ -62,22 +71,20 @@ export default function Login() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="h-12 px-8 font-semibold"
-                onClick={handleConnect}
-                disabled={isConnecting || connected}
-              >
-                {connected ? (
-                  "Wallet Connected"
-                ) : isConnecting ? (
-                  "Connecting..."
-                ) : (
-                  <>
-                    Connect Wallet <Wallet className="w-4 h-4 ml-2" />
-                  </>
-                )}
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {connectors.map((connector) => (
+                  <Button
+                    key={connector.uid}
+                    size="lg"
+                    className="h-12 px-8 font-semibold"
+                    onClick={() => handleConnect(connector)}
+                    disabled={isPending}
+                  >
+                    {isPending ? "Connecting..." : `Connect ${connector.name}`}
+                    <Wallet className="w-4 h-4 ml-2" />
+                  </Button>
+                ))}
+              </div>
               <Button
                 size="lg"
                 variant="outline"
@@ -89,7 +96,7 @@ export default function Login() {
               </Button>
             </div>
 
-            {connected && (
+            {isConnected && (
               <div className="mt-6 text-sm text-slate-500">
                 If this wallet is not registered, you will be redirected to
                 signup.
