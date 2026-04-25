@@ -39,7 +39,7 @@ export default function Signup() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [accepted, setAccepted] = useState(false);
 
-  const steps = ["Choose Role", "Details", "Connect Wallet", "Confirm"];
+  const steps = ["Choose", "Details", "Connect", "Confirm"];
 
   const nextStep = () =>
     setStep((prev) => (prev < 3 ? ((prev + 1) as SignupStep) : prev));
