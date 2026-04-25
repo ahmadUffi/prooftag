@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 import {
   ShieldCheck,
   ArrowRight,
@@ -33,13 +34,16 @@ export default function Signup() {
   const [role, setRole] = useState<SignupRole>(null);
   const [username, setUsername] = useState("");
   const [brandName, setBrandName] = useState("");
-  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState("");
   const [businessType, setBusinessType] = useState("");
-  const [walletConnected, setWalletConnected] = useState(false);
-  const [isConnecting, setIsConnecting] = useState(false);
+
   const [accepted, setAccepted] = useState(false);
 
   const steps = ["Choose", "Details", "Connect", "Confirm"];
+
+  const { address, isConnected } = useAccount();
+  const { connect, connectors } = useConnect();
+  const { disconnect } = useDisconnect();
 
   const nextStep = () =>
     setStep((prev) => (prev < 3 ? ((prev + 1) as SignupStep) : prev));
@@ -51,16 +55,17 @@ export default function Signup() {
     role === "user"
       ? username.trim().length > 0
       : brandName.trim().length > 0 &&
-        address.trim().length > 0 &&
+        location.trim().length > 0 &&
         !!businessType;
-  const canContinueFromWallet = walletConnected;
+  const canContinueFromWallet = isConnected;
   const canSubmit = accepted;
 
-  const handleConnectWallet = async () => {
-    setIsConnecting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setWalletConnected(true);
-    setIsConnecting(false);
+  const handleConnectWallet = async (connector: any) => {
+    try {
+      await connect({ connector });
+    } catch (error) {
+      console.error("Wallet connection failed:", error);
+    }
   };
 
   return (
@@ -247,8 +252,8 @@ export default function Signup() {
                           <Input
                             id="address"
                             placeholder="Headquarters or office address"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
                           />
                         </div>
                         <div>
@@ -312,21 +317,33 @@ export default function Signup() {
 
                     <div className="rounded-xl border border-dashed border-slate-200 p-6 text-center space-y-4">
                       <Wallet className="w-10 h-10 text-primary mx-auto" />
+
                       <p className="text-sm text-slate-600">
-                        {walletConnected
-                          ? "Wallet connected successfully."
+                        {isConnected
+                          ? `Connected: ${address?.slice(0, 6)}...${address?.slice(-4)}`
                           : "Connect your wallet to continue."}
                       </p>
-                      <Button
-                        onClick={handleConnectWallet}
-                        disabled={walletConnected || isConnecting}
-                      >
-                        {walletConnected
-                          ? "Wallet Connected"
-                          : isConnecting
-                            ? "Connecting..."
-                            : "Connect Wallet"}
-                      </Button>
+
+                      {!isConnected ? (
+                        <div className="space-y-2">
+                          {connectors.map((connector) => (
+                            <Button
+                              key={connector.uid}
+                              onClick={() => handleConnectWallet(connector)}
+                              className="w-full"
+                            >
+                              Connect {connector.name}
+                            </Button>
+                          ))}
+                        </div>
+                      ) : (
+                        <Button
+                          variant="destructive"
+                          onClick={() => disconnect()}
+                        >
+                          Disconnect
+                        </Button>
+                      )}
                     </div>
 
                     <div className="flex items-start gap-3 rounded-xl bg-amber-50 border border-amber-200 p-4">
@@ -398,7 +415,7 @@ export default function Signup() {
                       <div className="flex items-center justify-between">
                         <span className="text-slate-400">Wallet</span>
                         <span className="font-semibold text-emerald-600">
-                          Connected
+                          {address?.slice(0, 6)}...{address?.slice(-4)}
                         </span>
                       </div>
                     </div>
