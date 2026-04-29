@@ -8,6 +8,7 @@ import Products from "./pages/dashboard/Products";
 import Tracking from "./pages/dashboard/Tracking";
 import Logs from "./pages/dashboard/Logs";
 import Ownership from "./pages/dashboard/Ownership";
+import QrStyling from "./pages/dashboard/QrStyling";
 import Analytics from "./pages/dashboard/Analytics";
 import Settings from "./pages/dashboard/Settings";
 import Verify from "./pages/Verify";
@@ -26,9 +27,11 @@ export default function App() {
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Overview />} />
             <Route path="products" element={<Products />} />
+            <Route path="products/qr" element={<QrStyling />} />
             <Route path="tracking" element={<Tracking />} />
             <Route path="logs" element={<Logs />} />
             <Route path="ownership" element={<Ownership />} />
+            <Route path="qr" element={<QrStyling />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
           </Route>

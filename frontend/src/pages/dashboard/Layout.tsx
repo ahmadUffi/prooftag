@@ -9,6 +9,7 @@ import {
   BarChart3,
   Settings,
   ShieldCheck,
+  QrCode,
   Bell,
   Search,
   ChevronRight,
@@ -22,6 +23,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", path: "/dashboard" },
   { icon: Package, label: "Products", path: "/dashboard/products" },
+  { icon: QrCode, label: "QR Styling", path: "/dashboard/qr" },
   { icon: MapPin, label: "Tracking", path: "/dashboard/tracking" },
   { icon: History, label: "Verification Logs", path: "/dashboard/logs" },
   { icon: Key, label: "Ownership", path: "/dashboard/ownership" },
