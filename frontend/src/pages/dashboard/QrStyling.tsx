@@ -229,7 +229,7 @@ function ColorPicker({
 export default function QrStyling({
   dataQr = "https://prooftag.xyz/product/1234567890",
 }: {
-  dataQr: string;
+  dataQr?: string;
 }) {
   const previewRef = useRef<HTMLDivElement | null>(null);
   const qrRef = useRef<QRCodeStyling | null>(null);

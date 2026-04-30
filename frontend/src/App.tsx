@@ -14,6 +14,7 @@ import Settings from "./pages/dashboard/Settings";
 import Verify from "./pages/Verify";
 import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
+import BarcodeStyling from "./pages/dashboard/Barcode.tsx";
 
 export default function App() {
   return (
@@ -28,10 +29,11 @@ export default function App() {
             <Route index element={<Overview />} />
             <Route path="products" element={<Products />} />
             <Route path="products/qr" element={<QrStyling />} />
+            <Route path="products/barcode" element={<BarcodeStyling />} />
+
             <Route path="tracking" element={<Tracking />} />
             <Route path="logs" element={<Logs />} />
             <Route path="ownership" element={<Ownership />} />
-            <Route path="qr" element={<QrStyling />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
           </Route>
